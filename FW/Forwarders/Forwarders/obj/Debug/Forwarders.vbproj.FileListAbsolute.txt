@@ -11,3 +11,8 @@ D:\TCU_GH\FW\Forwarders\Forwarders\obj\Debug\Forwarders.exe
 D:\TCU_GH\FW\Forwarders\Forwarders\obj\Debug\Forwarders.pdb
 D:\TCU_GH\FW\Forwarders\Forwarders\obj\Debug\Forwarders.vbproj.ResolveComReference.cache
 D:\TCU_GH\FW\Forwarders\Forwarders\obj\Debug\Forwarders.MDIForwarders.resources
+D:\TCU_GH\SE_FW2\FW\Forwarders\Forwarders\bin\Debug\Forwarders.exe.config
+D:\TCU_GH\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.vbproj.ResolveComReference.cache
+D:\TCU_GH\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.exe
+D:\TCU_GH\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.xml
+D:\TCU_GH\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.pdb
