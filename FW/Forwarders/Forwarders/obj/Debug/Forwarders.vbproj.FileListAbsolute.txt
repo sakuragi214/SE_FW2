@@ -1,0 +1,5 @@
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\bin\Debug\Forwarders.exe.config
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.vbproj.ResolveComReference.cache
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.exe
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.xml
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.pdb
