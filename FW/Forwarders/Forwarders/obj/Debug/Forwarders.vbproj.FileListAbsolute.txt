@@ -18,3 +18,13 @@ D:\TCU_GH\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.frmLogin.resource
 D:\TCU_GH\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.Liquidation.resources
 D:\TCU_GH\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.Resources.resources
 D:\TCU_GH\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.vbproj.GenerateResource.Cache
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\bin\Debug\Forwarders.exe
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\bin\Debug\Forwarders.pdb
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\bin\Debug\Forwarders.xml
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.vbprojResolveAssemblyReference.cache
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.Advances.resources
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.MDIForwarders.resources
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.frmLogin.resources
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.Liquidation.resources
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.Resources.resources
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.vbproj.GenerateResource.Cache
