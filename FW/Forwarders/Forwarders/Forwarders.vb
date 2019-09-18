@@ -86,6 +86,10 @@ Public Class MDIForwarders
     Private m_ChildFormNumber As Integer
 
     Private Sub MDIForwarders_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ToolStripStatusLabel1.Text = "User: " + UCase(gs_User)
+    End Sub
+
+    Private Sub StatusStrip_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles StatusStrip.ItemClicked
 
     End Sub
 End Class

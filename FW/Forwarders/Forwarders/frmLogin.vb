@@ -9,6 +9,7 @@
         Dim chk As New Security
 
         If (chk.fCHK(txtUsername.Text, txtUsername.Text)) Then
+            gs_User = txtUsername.Text
             MDIForwarders.Show()
         Else
             MsgBox("Login not successful!")
