@@ -453,6 +453,7 @@ Partial Class Advances
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.CheckBox1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Advances"
         Me.Text = "Advances"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()

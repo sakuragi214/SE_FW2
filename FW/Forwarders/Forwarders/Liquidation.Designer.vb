@@ -273,6 +273,7 @@ Partial Class Liquidation
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBox1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Liquidation"
         Me.Text = "Liquidation"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()

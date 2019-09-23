@@ -8,7 +8,7 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim chk As New Security
 
-        If (chk.fCHK(txtUsername.Text, txtUsername.Text)) Then
+        If (chk.fCHK(txtUsername.Text, txtPassword.Text)) Then
             gs_User = txtUsername.Text
             MDIForwarders.Show()
             txtUsername.Clear()

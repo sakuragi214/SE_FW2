@@ -86,7 +86,15 @@ Public Class MDIForwarders
     Private m_ChildFormNumber As Integer
 
     Private Sub MDIForwarders_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ToolStripStatusLabel1.Text = "User: " + UCase(gs_User)
+        Me.TreeView1.Nodes(0).ExpandAll()
+        f = New Advances
+        f.TopLevel = False
+        Me.Panel1.Controls.Add(f)
+        f.Dock = DockStyle.Fill
+        f.Show()
+
+
+
     End Sub
 
     Private Sub StatusStrip_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles StatusStrip.ItemClicked
@@ -105,17 +113,29 @@ Public Class MDIForwarders
     Private Sub SplitContainer1_Panel1_Paint(sender As Object, e As PaintEventArgs) Handles SplitContainer1.Panel1.Paint
 
     End Sub
+    Private f As Form
+    Private Sub TreeView1_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles TreeView1.AfterSelect
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim node As TreeNode
+        node = TreeView1.SelectedNode
+        Select Case node.Text
+            Case "Advances"
+                f.Dispose()
+                f = New Advances
+                f.TopLevel = False
+                Me.Panel1.Controls.Add(f)
+                f.Dock = DockStyle.Fill
+                f.Show()
 
-        Panel2.Show()
+            Case "Liquidation"
+                f.Dispose()
+                f = New Liquidation
+                f.TopLevel = False
+                Me.Panel1.Controls.Add(f)
+                f.Dock = DockStyle.Fill
+                f.Show()
+        End Select
 
 
-
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Panel2.Hide()
-        Panel1.Show()
     End Sub
 End Class
