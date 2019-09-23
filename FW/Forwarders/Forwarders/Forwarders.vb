@@ -134,6 +134,54 @@ Public Class MDIForwarders
                 Me.Panel1.Controls.Add(f)
                 f.Dock = DockStyle.Fill
                 f.Show()
+
+            Case "Main"
+                f.Dispose()
+                f = New MainFW
+                f.TopLevel = False
+                Me.Panel1.Controls.Add(f)
+                f.Dock = DockStyle.Fill
+                f.Show()
+
+            Case "Details"
+                f.Dispose()
+                f = New Details
+                f.TopLevel = False
+                Me.Panel1.Controls.Add(f)
+                f.Dock = DockStyle.Fill
+                f.Show()
+
+            Case "Custom Info"
+                f.Dispose()
+                f = New CustomInfo
+                f.TopLevel = False
+                Me.Panel1.Controls.Add(f)
+                f.Dock = DockStyle.Fill
+                f.Show()
+
+            Case "History"
+                f.Dispose()
+                f = New History
+                f.TopLevel = False
+                Me.Panel1.Controls.Add(f)
+                f.Dock = DockStyle.Fill
+                f.Show()
+
+            Case "Certificate Of Payment"
+                f.Dispose()
+                f = New CertificateOfPayment
+                f.TopLevel = False
+                Me.Panel1.Controls.Add(f)
+                f.Dock = DockStyle.Fill
+                f.Show()
+
+            Case "Schedule Of Delivery"
+                f.Dispose()
+                f = New ScheduleOfDelivery
+                f.TopLevel = False
+                Me.Panel1.Controls.Add(f)
+                f.Dock = DockStyle.Fill
+                f.Show()
         End Select
 
 

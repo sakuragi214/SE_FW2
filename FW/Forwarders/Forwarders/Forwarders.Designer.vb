@@ -25,9 +25,16 @@ Partial Class MDIForwarders
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MDIForwarders))
-        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Advances")
-        Dim TreeNode2 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Liquidation")
-        Dim TreeNode3 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Brokerage", New System.Windows.Forms.TreeNode() {TreeNode1, TreeNode2})
+        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Details")
+        Dim TreeNode2 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Custom Info")
+        Dim TreeNode3 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("History")
+        Dim TreeNode4 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Certificate Of Payment")
+        Dim TreeNode5 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Schedule Of Delivery")
+        Dim TreeNode6 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Main", New System.Windows.Forms.TreeNode() {TreeNode1, TreeNode2, TreeNode3, TreeNode4, TreeNode5})
+        Dim TreeNode7 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Forwarder", New System.Windows.Forms.TreeNode() {TreeNode6})
+        Dim TreeNode8 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Advances")
+        Dim TreeNode9 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Liquidation")
+        Dim TreeNode10 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Brokerage", New System.Windows.Forms.TreeNode() {TreeNode8, TreeNode9})
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.FileMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -99,7 +106,7 @@ Partial Class MDIForwarders
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.MdiWindowListItem = Me.WindowsMenu
         Me.MenuStrip.Name = "MenuStrip"
-        Me.MenuStrip.Size = New System.Drawing.Size(632, 24)
+        Me.MenuStrip.Size = New System.Drawing.Size(964, 24)
         Me.MenuStrip.TabIndex = 5
         Me.MenuStrip.Text = "MenuStrip"
         '
@@ -384,7 +391,7 @@ Partial Class MDIForwarders
         Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripButton, Me.OpenToolStripButton, Me.SaveToolStripButton, Me.ToolStripSeparator1, Me.PrintToolStripButton, Me.PrintPreviewToolStripButton, Me.ToolStripSeparator2, Me.HelpToolStripButton})
         Me.ToolStrip.Location = New System.Drawing.Point(0, 24)
         Me.ToolStrip.Name = "ToolStrip"
-        Me.ToolStrip.Size = New System.Drawing.Size(632, 25)
+        Me.ToolStrip.Size = New System.Drawing.Size(964, 25)
         Me.ToolStrip.TabIndex = 6
         Me.ToolStrip.Text = "ToolStrip"
         '
@@ -457,7 +464,7 @@ Partial Class MDIForwarders
         Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel, Me.ToolStripStatusLabel1})
         Me.StatusStrip.Location = New System.Drawing.Point(0, 466)
         Me.StatusStrip.Name = "StatusStrip"
-        Me.StatusStrip.Size = New System.Drawing.Size(632, 22)
+        Me.StatusStrip.Size = New System.Drawing.Size(964, 22)
         Me.StatusStrip.TabIndex = 7
         Me.StatusStrip.Text = "StatusStrip"
         '
@@ -484,22 +491,37 @@ Partial Class MDIForwarders
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.Panel1)
-        Me.SplitContainer1.Size = New System.Drawing.Size(632, 417)
-        Me.SplitContainer1.SplitterDistance = 131
+        Me.SplitContainer1.Size = New System.Drawing.Size(964, 417)
+        Me.SplitContainer1.SplitterDistance = 199
         Me.SplitContainer1.TabIndex = 9
         '
         'TreeView1
         '
-        Me.TreeView1.Location = New System.Drawing.Point(3, 3)
+        Me.TreeView1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TreeView1.Location = New System.Drawing.Point(0, 0)
         Me.TreeView1.Name = "TreeView1"
-        TreeNode1.Name = "Node1"
-        TreeNode1.Text = "Advances"
-        TreeNode2.Name = "Node3"
-        TreeNode2.Text = "Liquidation"
-        TreeNode3.Name = "Node0"
-        TreeNode3.Text = "Brokerage"
-        Me.TreeView1.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode3})
-        Me.TreeView1.Size = New System.Drawing.Size(125, 97)
+        TreeNode1.Name = "nnDetails"
+        TreeNode1.Text = "Details"
+        TreeNode2.Name = "nnCustomInfo"
+        TreeNode2.Text = "Custom Info"
+        TreeNode3.Name = "nnHistory"
+        TreeNode3.Text = "History"
+        TreeNode4.Name = "nnCertificate"
+        TreeNode4.Text = "Certificate Of Payment"
+        TreeNode5.Name = "nnSchedule"
+        TreeNode5.Text = "Schedule Of Delivery"
+        TreeNode6.Name = "nMain"
+        TreeNode6.Text = "Main"
+        TreeNode7.Name = "Node0"
+        TreeNode7.Text = "Forwarder"
+        TreeNode8.Name = "Node1"
+        TreeNode8.Text = "Advances"
+        TreeNode9.Name = "Node3"
+        TreeNode9.Text = "Liquidation"
+        TreeNode10.Name = "Node0"
+        TreeNode10.Text = "Brokerage"
+        Me.TreeView1.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode7, TreeNode10})
+        Me.TreeView1.Size = New System.Drawing.Size(199, 417)
         Me.TreeView1.TabIndex = 0
         '
         'Panel1
@@ -507,14 +529,14 @@ Partial Class MDIForwarders
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(497, 417)
+        Me.Panel1.Size = New System.Drawing.Size(761, 417)
         Me.Panel1.TabIndex = 0
         '
         'MDIForwarders
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 14.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(632, 488)
+        Me.ClientSize = New System.Drawing.Size(964, 488)
         Me.Controls.Add(Me.SplitContainer1)
         Me.Controls.Add(Me.ToolStrip)
         Me.Controls.Add(Me.MenuStrip)
