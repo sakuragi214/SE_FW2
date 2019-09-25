@@ -2,6 +2,19 @@
 
 Public Class MDIForwarders
 
+    Dim WithEvents aTimer As New System.Windows.Forms.Timer
+
+    Private Sub aTimer_Tick(ByVal sender As Object,
+                            ByVal e As System.EventArgs) Handles aTimer.Tick
+        ToolStripStatusLabel2.Text = DateTime.Now.ToString("MMMM dd, yyyy h:mm:ss tt")
+    End Sub
+
+    Private Sub Form1_Shown(ByVal sender As Object,
+                            ByVal e As System.EventArgs) Handles Me.Shown
+        aTimer.Interval = 250
+        aTimer.Start()
+    End Sub
+
     Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs) Handles NewToolStripMenuItem.Click, NewToolStripButton.Click, NewWindowToolStripMenuItem.Click
         ' Create a new instance of the child form.
         Dim ChildForm As New System.Windows.Forms.Form
@@ -86,12 +99,53 @@ Public Class MDIForwarders
     Private m_ChildFormNumber As Integer
 
     Private Sub MDIForwarders_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.TreeView1.Nodes(0).ExpandAll()
-        f = New Advances
-        f.TopLevel = False
-        Me.Panel1.Controls.Add(f)
-        f.Dock = DockStyle.Fill
+        ToolStripStatusLabel3.Text = ("USER: " + FW.gs_User)
+
+
+
+        f = New MainFW
+            f.TopLevel = False
+            Me.Panel1.Controls.Add(f)
+            f.Dock = DockStyle.Fill
         f.Show()
+        Dim Forwarding As TreeNode
+        Dim Brokerage As TreeNode
+        Dim UserSettings As TreeNode
+        If (FW.gs_User = "admin") Then
+            Forwarding = New TreeNode("Forwarder")
+            TreeView1.Nodes.Add(Forwarding)
+            Forwarding.Nodes.Add("Details")
+            Forwarding.Nodes.Add("Custom Info")
+            Forwarding.Nodes.Add("History")
+            Forwarding.Nodes.Add("Certificate Of Payment")
+            Forwarding.Nodes.Add("Schedule Of Delivery")
+            Brokerage = New TreeNode("Brokerage")
+            TreeView1.Nodes.Add(Brokerage)
+            Brokerage.Nodes.Add("Advances")
+            Brokerage.Nodes.Add("Liquidation")
+            UserSettings = New TreeNode("User Settings")
+            TreeView1.Nodes.Add(UserSettings)
+            Me.TreeView1.Nodes(0).ExpandAll()
+            Me.TreeView1.Nodes(1).ExpandAll()
+        ElseIf (FW.gs_User = "forwarder") Then
+            Forwarding = New TreeNode("Forwarder")
+            TreeView1.Nodes.Add(Forwarding)
+            Forwarding.Nodes.Add("Details")
+            Forwarding.Nodes.Add("Custom Info")
+            Forwarding.Nodes.Add("History")
+            Forwarding.Nodes.Add("Certificate Of Payment")
+            Forwarding.Nodes.Add("Schedule Of Delivery")
+            Me.TreeView1.Nodes(0).ExpandAll()
+        ElseIf (FW.gs_User = "broker") Then
+            Brokerage = New TreeNode("Brokerage")
+            TreeView1.Nodes.Add(Brokerage)
+            Brokerage.Nodes.Add("Advances")
+            Brokerage.Nodes.Add("Liquidation")
+            Me.TreeView1.Nodes(0).ExpandAll()
+        End If
+
+
+
 
 
 
@@ -143,6 +197,14 @@ Public Class MDIForwarders
                 f.Dock = DockStyle.Fill
                 f.Show()
 
+            Case "Forwarder"
+                f.Dispose()
+                f = New Details
+                f.TopLevel = False
+                Me.Panel1.Controls.Add(f)
+                f.Dock = DockStyle.Fill
+                f.Show()
+
             Case "Details"
                 f.Dispose()
                 f = New Details
@@ -182,8 +244,19 @@ Public Class MDIForwarders
                 Me.Panel1.Controls.Add(f)
                 f.Dock = DockStyle.Fill
                 f.Show()
+
+            Case "Brokerage"
+                f.Dispose()
+                f = New Advances
+                f.TopLevel = False
+                Me.Panel1.Controls.Add(f)
+                f.Dock = DockStyle.Fill
+                f.Show()
+
         End Select
 
 
     End Sub
+
+
 End Class

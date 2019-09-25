@@ -25,16 +25,6 @@ Partial Class MDIForwarders
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MDIForwarders))
-        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Details")
-        Dim TreeNode2 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Custom Info")
-        Dim TreeNode3 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("History")
-        Dim TreeNode4 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Certificate Of Payment")
-        Dim TreeNode5 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Schedule Of Delivery")
-        Dim TreeNode6 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Main", New System.Windows.Forms.TreeNode() {TreeNode1, TreeNode2, TreeNode3, TreeNode4, TreeNode5})
-        Dim TreeNode7 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Forwarder", New System.Windows.Forms.TreeNode() {TreeNode6})
-        Dim TreeNode8 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Advances")
-        Dim TreeNode9 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Liquidation")
-        Dim TreeNode10 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Brokerage", New System.Windows.Forms.TreeNode() {TreeNode8, TreeNode9})
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.FileMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -87,6 +77,8 @@ Partial Class MDIForwarders
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.TreeView1 = New System.Windows.Forms.TreeView()
@@ -461,7 +453,7 @@ Partial Class MDIForwarders
         '
         'StatusStrip
         '
-        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel, Me.ToolStripStatusLabel1})
+        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel, Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel3})
         Me.StatusStrip.Location = New System.Drawing.Point(0, 466)
         Me.StatusStrip.Name = "StatusStrip"
         Me.StatusStrip.Size = New System.Drawing.Size(964, 22)
@@ -477,6 +469,18 @@ Partial Class MDIForwarders
         '
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(0, 17)
+        '
+        'ToolStripStatusLabel2
+        '
+        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(120, 17)
+        Me.ToolStripStatusLabel2.Text = "ToolStripStatusLabel2"
+        '
+        'ToolStripStatusLabel3
+        '
+        Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(120, 17)
+        Me.ToolStripStatusLabel3.Text = "ToolStripStatusLabel3"
         '
         'SplitContainer1
         '
@@ -500,27 +504,6 @@ Partial Class MDIForwarders
         Me.TreeView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TreeView1.Location = New System.Drawing.Point(0, 0)
         Me.TreeView1.Name = "TreeView1"
-        TreeNode1.Name = "nnDetails"
-        TreeNode1.Text = "Details"
-        TreeNode2.Name = "nnCustomInfo"
-        TreeNode2.Text = "Custom Info"
-        TreeNode3.Name = "nnHistory"
-        TreeNode3.Text = "History"
-        TreeNode4.Name = "nnCertificate"
-        TreeNode4.Text = "Certificate Of Payment"
-        TreeNode5.Name = "nnSchedule"
-        TreeNode5.Text = "Schedule Of Delivery"
-        TreeNode6.Name = "nMain"
-        TreeNode6.Text = "Main"
-        TreeNode7.Name = "Node0"
-        TreeNode7.Text = "Forwarder"
-        TreeNode8.Name = "Node1"
-        TreeNode8.Text = "Advances"
-        TreeNode9.Name = "Node3"
-        TreeNode9.Text = "Liquidation"
-        TreeNode10.Name = "Node0"
-        TreeNode10.Text = "Brokerage"
-        Me.TreeView1.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode7, TreeNode10})
         Me.TreeView1.Size = New System.Drawing.Size(199, 417)
         Me.TreeView1.TabIndex = 0
         '
@@ -617,4 +600,6 @@ Partial Class MDIForwarders
     Friend WithEvents SplitContainer1 As SplitContainer
     Friend WithEvents TreeView1 As TreeView
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
 End Class
