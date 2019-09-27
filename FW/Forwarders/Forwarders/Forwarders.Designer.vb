@@ -83,6 +83,7 @@ Partial Class MDIForwarders
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.TreeView1 = New System.Windows.Forms.TreeView()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.ScreenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -90,6 +91,7 @@ Partial Class MDIForwarders
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
+        CType(Me.ScreenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip
@@ -515,6 +517,10 @@ Partial Class MDIForwarders
         Me.Panel1.Size = New System.Drawing.Size(761, 417)
         Me.Panel1.TabIndex = 0
         '
+        'ScreenBindingSource
+        '
+        Me.ScreenBindingSource.DataMember = "Screen"
+        '
         'MDIForwarders
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 14.0!)
@@ -540,6 +546,7 @@ Partial Class MDIForwarders
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
+        CType(Me.ScreenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -602,4 +609,5 @@ Partial Class MDIForwarders
     Friend WithEvents Panel1 As Panel
     Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
+    Friend WithEvents ScreenBindingSource As BindingSource
 End Class
