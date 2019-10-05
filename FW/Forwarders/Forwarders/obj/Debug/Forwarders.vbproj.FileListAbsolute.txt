@@ -76,3 +76,4 @@ D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.Details
 D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.History.resources
 D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.MainFW.resources
 D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.ScheduleOfDelivery.resources
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.UserPermissions.resources

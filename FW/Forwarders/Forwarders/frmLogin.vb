@@ -10,7 +10,7 @@
 
         If (chk.fCHK(txtUsername.Text, txtPassword.Text)) Then
             gs_User = txtUsername.Text
-            MDIForwarders.Show()
+            UserPermissions.Show()
             txtUsername.Clear()
             txtPassword.Clear()
             Me.Hide()

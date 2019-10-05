@@ -150,6 +150,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Security.vb" />
+    <Compile Include="UserPermissions.Designer.vb">
+      <DependentUpon>UserPermissions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserPermissions.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Advances.resx">
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScheduleOfDelivery.resx">
       <DependentUpon>ScheduleOfDelivery.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserPermissions.resx">
+      <DependentUpon>UserPermissions.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
