@@ -124,4 +124,8 @@
         DataGridView2.Rows(e.RowIndex).HeaderCell.Value = CStr(e.RowIndex + 1)
 
     End Sub
+
+    Private Sub txtFileNo_TextChanged(sender As Object, e As EventArgs) Handles txtFileNo.TextChanged
+
+    End Sub
 End Class

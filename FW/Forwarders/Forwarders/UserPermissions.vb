@@ -57,26 +57,23 @@ Public Class UserPermissions
         If Not String.IsNullOrEmpty(DataGridView1.Item(0, i).Value.ToString) Then
             TextBox2.Text = DataGridView1.Item(0, i).Value
             TextBox3.Text = DataGridView1.Item(1, i).Value
-            TextBox4.Text = DataGridView1.Item(2, i).Value
+            ComboBox1.Text = DataGridView1.Item(2, i).Value
 
         Else
             TextBox2.Text = ""
             TextBox3.Text = ""
-            TextBox4.Text = ""
+            ComboBox1.Text = ""
         End If
 
 
     End Sub
 
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
-
-    End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         FilterData(TextBox1.Text)
         TextBox2.Text = ""
         TextBox3.Text = ""
-        TextBox4.Text = ""
+
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -86,12 +83,21 @@ Public Class UserPermissions
         rs.CursorLocation = ADODB.CursorLocationEnum.adUseClient
         rs.CursorType = ADODB.CursorTypeEnum.adOpenStatic
         rs.LockType = ADODB.LockTypeEnum.adLockBatchOptimistic
-        rs.Open("Update Users Inner Join UserScreen On Users.UserID=UserScreen.UserID Inner Join Screen On Screen.ScreenID=UserScreen.ScreenID Where Users.UserID='" + TextBox1.Text + "' set UserScreen.Status='" + TextBox4.Text + "'", gs_Conn, 3)
+        rs.Open("UPDATE
+    UserScreen
+SET
+    UserScreen.Status='" + ComboBox1.Text + "'
+FROM 
+    Users Inner Join UserScreen On Users.UserID=UserScreen.UserID Inner Join Screen On Screen.ScreenID=UserScreen.ScreenID
+WHERE
+        UserScreen.UserID ='" + TextBox1.Text + "' And UserScreen.ScreenID='" + TextBox2.Text + "'", gs_Conn, 3)
+        FilterData(TextBox1.Text)
+        MessageBox.Show("Please Re-Log In to Take Effect Changes")
 
 
     End Sub
 
-    Private Sub TextBox4_TextChanged(sender As Object, e As EventArgs) Handles TextBox4.TextChanged
+    Private Sub TextBox4_TextChanged(sender As Object, e As EventArgs)
 
     End Sub
 
