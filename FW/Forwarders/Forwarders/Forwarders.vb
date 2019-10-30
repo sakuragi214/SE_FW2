@@ -6,6 +6,7 @@ Imports System.IO
 Imports System.Data.SqlClient
 
 Public Class MDIForwarders
+    Private f As Form
     Dim WithEvents aTimer As New System.Windows.Forms.Timer
 
     Private Sub aTimer_Tick(ByVal sender As Object,
@@ -18,17 +19,71 @@ Public Class MDIForwarders
         aTimer.Interval = 250
         aTimer.Start()
     End Sub
+    Public Sub ClearTextBoxes(Optional ByVal ctlcol As Control.ControlCollection = Nothing)
+        If ctlcol Is Nothing Then ctlcol = f.Controls
+        For Each ctl As Control In ctlcol
+            If TypeOf (ctl) Is TextBox Then
+                DirectCast(ctl, TextBox).Clear()
+            Else
+                If Not ctl.Controls Is Nothing OrElse ctl.Controls.Count <> 0 Then
+                    ClearTextBoxes(ctl.Controls)
+                End If
+            End If
+        Next
+    End Sub
+    Private Sub clear(Optional ByVal textclearcol As Control.ControlCollection = Nothing)
+        If textclearcol Is Nothing Then textclearcol = f.Controls
+        For Each textclear As Control In textclearcol
+            If TypeOf textclear Is CheckBox Then
+                DirectCast(textclear, CheckBox).Checked = False
+            Else
+                If Not textclear.Controls Is Nothing OrElse textclear.Controls.Count <> 0 Then
+                    clear(textclear.Controls)
+                End If
+            End If
+        Next
+    End Sub
+    Private Sub radclear(Optional ByVal textclearrad As Control.ControlCollection = Nothing)
+        If textclearrad Is Nothing Then textclearrad = f.Controls
+        For Each textclearrd As Control In textclearrad
+            If TypeOf textclearrd Is RadioButton Then
+                DirectCast(textclearrd, RadioButton).Checked = False
+            Else
+                If Not textclearrd.Controls Is Nothing OrElse textclearrd.Controls.Count <> 0 Then
+                    radclear(textclearrd.Controls)
+                End If
+            End If
+        Next
+    End Sub
+    Private Sub cbclear(Optional ByVal textclearcbcol As Control.ControlCollection = Nothing)
+        If textclearcbcol Is Nothing Then textclearcbcol = f.Controls
+        For Each textclearcb As Control In textclearcbcol
+            If TypeOf textclearcb Is ComboBox Then
+                DirectCast(textclearcb, ComboBox).Text = ""
+            Else
+                If Not textclearcb.Controls Is Nothing OrElse textclearcb.Controls.Count <> 0 Then
+                    cbclear(textclearcb.Controls)
+                End If
+            End If
+        Next
+    End Sub
 
     Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs) Handles NewToolStripMenuItem.Click, NewToolStripButton.Click, NewWindowToolStripMenuItem.Click
+        ClearTextBoxes()
+        clear()
+        cbclear()
+        radclear()
+
         ' Create a new instance of the child form.
-        Dim ChildForm As New System.Windows.Forms.Form
+        '  Dim ChildForm As New System.Windows.Forms.Form
         ' Make it a child of this MDI form before showing it.
-        ChildForm.MdiParent = Me
+        ' ChildForm.MdiParent = Me
 
-        m_ChildFormNumber += 1
-        ChildForm.Text = "Window " & m_ChildFormNumber
+        'm_ChildFormNumber += 1
+        'ChildForm.Text = "Window " & m_ChildFormNumber
 
-        ChildForm.Show()
+        'ChildForm.Show()
+
     End Sub
 
     Private Sub OpenFile(ByVal sender As Object, ByVal e As EventArgs) Handles OpenToolStripMenuItem.Click, OpenToolStripButton.Click
@@ -103,62 +158,13 @@ Public Class MDIForwarders
     Private m_ChildFormNumber As Integer
 
     Private Sub MDIForwarders_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'FWDataSet.Screen' table. You can move, or remove it, as needed.
-
         ToolStripStatusLabel3.Text = ("USER: " + FW.gs_User)
-        'If (gs_User = "forwarder") Then 'Make a form for Forwarder Welcome Screen
         f = New Blank
-        'ElseIf (gs_User = "broker") Then 'Make a form for Broker Welcome Screen
-        ' f = New Advances
-        ' ElseIf (gs_User = "admin") Then 'Make a form for Admin Welcome Screen
-        ' f = New MainFW
-        ' End If
         f.TopLevel = False
         Me.Panel1.Controls.Add(f)
         f.Dock = DockStyle.Fill
         f.Show()
-        Dim Forwarding As TreeNode
-        Dim Brokerage As TreeNode
-        Dim UserSettings As TreeNode
-        ' If (FW.gs_User = "admin") Then
-        'Forwarding = New TreeNode("Forwarder")
-        'TreeView1.Nodes.Add(Forwarding)
-        'Forwarding.Nodes.Add("Details")
-        'Forwarding.Nodes.Add("Custom Info")
-        'Forwarding.Nodes.Add("History")
-        'Forwarding.Nodes.Add("Certificate Of Payment")
-        'Forwarding.Nodes.Add("Schedule Of Delivery")
-        'Brokerage = New TreeNode("Brokerage")
-        'TreeView1.Nodes.Add(Brokerage)
-        'Brokerage.Nodes.Add("Advances")
-        'Brokerage.Nodes.Add("Liquidation")
-        'UserSettings = New TreeNode("User Settings")
-        'TreeView1.Nodes.Add(UserSettings)
-        'Me.TreeView1.Nodes(0).ExpandAll()
-        'Me.TreeView1.Nodes(1).ExpandAll()
         BindTreeViewAdmin()
-
-        'ElseIf (FW.gs_User = "forwarder") Then
-        '    BindTreeViewForwarder()
-        'Forwarding = New TreeNode("Forwarder")
-        'TreeView1.Nodes.Add(Forwarding)
-        'Forwarding.Nodes.Add("Details")
-        'Forwarding.Nodes.Add("Custom Info")
-        'Forwarding.Nodes.Add("History")
-        'Forwarding.Nodes.Add("Certificate Of Payment")
-        'Forwarding.Nodes.Add("Schedule Of Delivery")
-        'Me.TreeView1.Nodes(0).ExpandAll()
-        ' ElseIf (FW.gs_User = "broker") Then
-        '     BindTreeViewBrokerage()
-        'Brokerage = New TreeNode("Brokerage")
-        'TreeView1.Nodes.Add(Brokerage)
-        'Brokerage.Nodes.Add("Advances")
-        'Brokerage.Nodes.Add("Liquidation")
-        'Me.TreeView1.Nodes(0).ExpandAll()
-        ' End If
-
-
-
 
 
 
@@ -180,7 +186,7 @@ Public Class MDIForwarders
     Private Sub SplitContainer1_Panel1_Paint(sender As Object, e As PaintEventArgs) Handles SplitContainer1.Panel1.Paint
 
     End Sub
-    Private f As Form
+
     Private Sub TreeView1_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles TreeView1.AfterSelect
 
         Dim node As TreeNode
@@ -202,13 +208,13 @@ Public Class MDIForwarders
                 f.Dock = DockStyle.Fill
                 f.Show()
 
-            Case "Main"
-                f.Dispose()
-                f = New MainFW
-                f.TopLevel = False
-                Me.Panel1.Controls.Add(f)
-                f.Dock = DockStyle.Fill
-                f.Show()
+                'Case "Main"
+                '   f.Dispose()
+                '  f = New MainFW
+                ' f.TopLevel = False
+                ' Me.Panel1.Controls.Add(f)
+                ' f.Dock = DockStyle.Fill
+               ' f.Show()
 
 
 
@@ -260,6 +266,14 @@ Public Class MDIForwarders
                 f.Dock = DockStyle.Fill
                 f.Show()
 
+            Case "Billing"
+                f.Dispose()
+                f = New Billing
+                f.TopLevel = False
+                Me.Panel1.Controls.Add(f)
+                f.Dock = DockStyle.Fill
+                f.Show()
+
 
         End Select
 
@@ -287,6 +301,7 @@ Public Class MDIForwarders
 
             TreeView1.Nodes.Add("Forwarders")
             TreeView1.Nodes.Add("Brokerage")
+            TreeView1.Nodes.Add("Billing")
             TreeView1.Nodes.Add("Admin")
             For j = 0 To dt.Rows.Count - 1
                 If (dt.Rows(j).Item("Status") = "Enable") Then
@@ -296,9 +311,12 @@ Public Class MDIForwarders
                     ElseIf (dt.Rows(j).Item("FormParent") = "Brokerage") Then
                         TreeView1.Nodes(i + 1).Nodes.Add(dt.Rows(j).Item("NodeName"))
                         Me.TreeView1.Nodes(1).ExpandAll()
-                    ElseIf (dt.Rows(j).Item("FormParent") = "Admin") Then
+                    ElseIf (dt.Rows(j).Item("FormParent") = "Billing") Then
                         TreeView1.Nodes(i + 2).Nodes.Add(dt.Rows(j).Item("NodeName"))
                         Me.TreeView1.Nodes(2).ExpandAll()
+                    ElseIf (dt.Rows(j).Item("FormParent") = "Admin") Then
+                        TreeView1.Nodes(i + 3).Nodes.Add(dt.Rows(j).Item("NodeName"))
+                        Me.TreeView1.Nodes(3).ExpandAll()
                     End If
                 End If
 
@@ -379,11 +397,9 @@ Public Class MDIForwarders
         End Try
     End Sub
 
-    Private Sub SaveToolStripButton_Click(sender As Object, e As EventArgs) Handles SaveToolStripButton.Click
-
-    End Sub
-
-    Private Sub EditMenu_Click(sender As Object, e As EventArgs) Handles EditMenu.Click
-
+    Private Sub MDIForwarders_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If (e.Control AndAlso e.KeyCode = Keys.N) Then
+            Debug.Print("Call Save action here")
+        End If
     End Sub
 End Class

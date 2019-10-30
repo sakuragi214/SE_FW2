@@ -321,6 +321,7 @@ Partial Class History
         Me.txtFileNo.Name = "txtFileNo"
         Me.txtFileNo.Size = New System.Drawing.Size(100, 20)
         Me.txtFileNo.TabIndex = 52
+        Me.txtFileNo.Text = "F3 for Search"
         '
         'Label1
         '

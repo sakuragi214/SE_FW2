@@ -46,11 +46,6 @@ Public Class UserPermissions
         DataGridView1.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
     End Sub
 
-
-    Private Sub UserAccountsDataGrid_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
-
-    End Sub
-
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
         Dim i As Integer
         i = DataGridView1.CurrentRow.Index
@@ -76,21 +71,16 @@ Public Class UserPermissions
 
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         FilterData(TextBox1.Text)
 
         Dim rs As New ADODB.Recordset
         rs.CursorLocation = ADODB.CursorLocationEnum.adUseClient
         rs.CursorType = ADODB.CursorTypeEnum.adOpenStatic
         rs.LockType = ADODB.LockTypeEnum.adLockBatchOptimistic
-        rs.Open("UPDATE
-    UserScreen
-SET
-    UserScreen.Status='" + ComboBox1.Text + "'
-FROM 
-    Users Inner Join UserScreen On Users.UserID=UserScreen.UserID Inner Join Screen On Screen.ScreenID=UserScreen.ScreenID
-WHERE
-        UserScreen.UserID ='" + TextBox1.Text + "' And UserScreen.ScreenID='" + TextBox2.Text + "'", gs_Conn, 3)
+        rs.Open("UPDATE UserScreen SET UserScreen.Status='" + ComboBox1.Text + "' FROM  Users Inner Join 
+UserScreen On Users.UserID=UserScreen.UserID Inner Join Screen On Screen.ScreenID=UserScreen.ScreenID
+WHERE UserScreen.UserID ='" + TextBox1.Text + "' And UserScreen.ScreenID='" + TextBox2.Text + "'", gs_Conn, 3)
         FilterData(TextBox1.Text)
         MessageBox.Show("Please Re-Log In to Take Effect Changes")
 
@@ -101,4 +91,7 @@ WHERE
 
     End Sub
 
+    Private Sub btnAddUser_Click(sender As Object, e As EventArgs) Handles btnAddUser.Click
+        AddUser.Show()
+    End Sub
 End Class
