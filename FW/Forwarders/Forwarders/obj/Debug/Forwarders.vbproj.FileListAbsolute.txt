@@ -121,3 +121,5 @@ D:\Documents\GitHub\mimaprog\FW\Forwarders\Forwarders\obj\Debug\Forwarders.File_
 D:\Documents\GitHub\mimaprog\FW\Forwarders\Forwarders\obj\Debug\Forwarders.SetScreenStatus.resources
 D:\Documents\GitHub\mimaprog\FW\Forwarders\Forwarders\obj\Debug\Forwarders.UserPermissions.resources
 D:\Documents\GitHub\mimaprog\FW\Forwarders\Forwarders\obj\Debug\Forwarders.test.resources
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Interop.ADODB.dll
+D:\Documents\GitHub\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Interop.ADOR.dll
