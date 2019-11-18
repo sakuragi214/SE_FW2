@@ -83,7 +83,11 @@ Partial Class MDIForwarders
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.TreeView1 = New System.Windows.Forms.TreeView()
         Me.Panel1 = New System.Windows.Forms.Panel()
+<<<<<<< HEAD
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+=======
+        Me.ScreenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+>>>>>>> f329e747761e07c548be782cfec33d0dd612621c
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -91,6 +95,7 @@ Partial Class MDIForwarders
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
+        CType(Me.ScreenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip
@@ -516,11 +521,17 @@ Partial Class MDIForwarders
         Me.Panel1.Size = New System.Drawing.Size(761, 417)
         Me.Panel1.TabIndex = 0
         '
+<<<<<<< HEAD
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(174, 22)
         Me.ToolStripMenuItem1.Text = "&Collection"
+=======
+        'ScreenBindingSource
+        '
+        Me.ScreenBindingSource.DataMember = "Screen"
+>>>>>>> f329e747761e07c548be782cfec33d0dd612621c
         '
         'MDIForwarders
         '
@@ -547,6 +558,7 @@ Partial Class MDIForwarders
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
+        CType(Me.ScreenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -609,5 +621,9 @@ Partial Class MDIForwarders
     Friend WithEvents Panel1 As Panel
     Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
+<<<<<<< HEAD
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+=======
+    Friend WithEvents ScreenBindingSource As BindingSource
+>>>>>>> f329e747761e07c548be782cfec33d0dd612621c
 End Class

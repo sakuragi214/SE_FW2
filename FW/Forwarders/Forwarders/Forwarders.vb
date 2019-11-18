@@ -1,7 +1,12 @@
 ﻿Imports System.Windows.Forms
+Imports System.Data
+Imports System.Data.OleDb
+Imports ADODB
+Imports System.IO
+Imports System.Data.SqlClient
 
 Public Class MDIForwarders
-
+    Private f As Form
     Dim WithEvents aTimer As New System.Windows.Forms.Timer
 
     Private Sub aTimer_Tick(ByVal sender As Object,
@@ -14,23 +19,89 @@ Public Class MDIForwarders
         aTimer.Interval = 250
         aTimer.Start()
     End Sub
+    Public Sub ClearTextBoxes(Optional ByVal ctlcol As Control.ControlCollection = Nothing)
+        If ctlcol Is Nothing Then ctlcol = f.Controls
+        For Each ctl As Control In ctlcol
+            If TypeOf (ctl) Is TextBox Then
+                DirectCast(ctl, TextBox).Clear()
+            Else
+                If Not ctl.Controls Is Nothing OrElse ctl.Controls.Count <> 0 Then
+                    ClearTextBoxes(ctl.Controls)
+                End If
+            End If
+        Next
+    End Sub
+    Private Sub clear(Optional ByVal textclearcol As Control.ControlCollection = Nothing)
+        If textclearcol Is Nothing Then textclearcol = f.Controls
+        For Each textclear As Control In textclearcol
+            If TypeOf textclear Is CheckBox Then
+                DirectCast(textclear, CheckBox).Checked = False
+            Else
+                If Not textclear.Controls Is Nothing OrElse textclear.Controls.Count <> 0 Then
+                    clear(textclear.Controls)
+                End If
+            End If
+        Next
+    End Sub
+    Private Sub radclear(Optional ByVal textclearrad As Control.ControlCollection = Nothing)
+        If textclearrad Is Nothing Then textclearrad = f.Controls
+        For Each textclearrd As Control In textclearrad
+            If TypeOf textclearrd Is RadioButton Then
+                DirectCast(textclearrd, RadioButton).Checked = False
+            Else
+                If Not textclearrd.Controls Is Nothing OrElse textclearrd.Controls.Count <> 0 Then
+                    radclear(textclearrd.Controls)
+                End If
+            End If
+        Next
+    End Sub
+    Private Sub cbclear(Optional ByVal textclearcbcol As Control.ControlCollection = Nothing)
+        If textclearcbcol Is Nothing Then textclearcbcol = f.Controls
+        For Each textclearcb As Control In textclearcbcol
+            If TypeOf textclearcb Is ComboBox Then
+                DirectCast(textclearcb, ComboBox).Text = ""
+            Else
+                If Not textclearcb.Controls Is Nothing OrElse textclearcb.Controls.Count <> 0 Then
+                    cbclear(textclearcb.Controls)
+                End If
+            End If
+        Next
+    End Sub
 
+<<<<<<< HEAD
     Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs) Handles menuShipment.Click, NewToolStripButton.Click, NewWindowToolStripMenuItem.Click
+=======
+    Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs) Handles NewToolStripMenuItem.Click, NewToolStripButton.Click, NewWindowToolStripMenuItem.Click
+        ClearTextBoxes()
+        clear()
+        cbclear()
+        radclear()
+
+>>>>>>> f329e747761e07c548be782cfec33d0dd612621c
         ' Create a new instance of the child form.
-        Dim ChildForm As New System.Windows.Forms.Form
+        '  Dim ChildForm As New System.Windows.Forms.Form
         ' Make it a child of this MDI form before showing it.
+<<<<<<< HEAD
         If menuShipment.Text = "&Shipment" Then gs_Module = "SH"
         fGENERATEMenu()
         ChildForm.MdiParent = Me
+=======
+        ' ChildForm.MdiParent = Me
 
-        m_ChildFormNumber += 1
-        ChildForm.Text = "Window " & m_ChildFormNumber
+        'm_ChildFormNumber += 1
+        'ChildForm.Text = "Window " & m_ChildFormNumber
+>>>>>>> f329e747761e07c548be782cfec33d0dd612621c
 
+        'ChildForm.Show()
+
+<<<<<<< HEAD
         ChildForm.Show()
 
 
 
 
+=======
+>>>>>>> f329e747761e07c548be782cfec33d0dd612621c
     End Sub
 
     Private Sub OpenFile(ByVal sender As Object, ByVal e As EventArgs) Handles OpenToolStripMenuItem.Click, OpenToolStripButton.Click
@@ -182,14 +253,12 @@ Public Class MDIForwarders
     End Function
     Private Sub MDIForwarders_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ToolStripStatusLabel3.Text = ("USER: " + FW.gs_User)
-
-
-
-        f = New MainFW
-            f.TopLevel = False
-            Me.Panel1.Controls.Add(f)
-            f.Dock = DockStyle.Fill
+        f = New Blank
+        f.TopLevel = False
+        Me.Panel1.Controls.Add(f)
+        f.Dock = DockStyle.Fill
         f.Show()
+<<<<<<< HEAD
 
         'If (FW.gs_User = "admin") Then
         '    Forwarding = New TreeNode("Forwarder")
@@ -226,6 +295,9 @@ Public Class MDIForwarders
 
 
 
+=======
+        BindTreeViewAdmin()
+>>>>>>> f329e747761e07c548be782cfec33d0dd612621c
 
 
 
@@ -247,7 +319,7 @@ Public Class MDIForwarders
     Private Sub SplitContainer1_Panel1_Paint(sender As Object, e As PaintEventArgs) Handles SplitContainer1.Panel1.Paint
 
     End Sub
-    Private f As Form
+
     Private Sub TreeView1_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles TreeView1.AfterSelect
 
         Dim node As TreeNode
@@ -269,21 +341,15 @@ Public Class MDIForwarders
                 f.Dock = DockStyle.Fill
                 f.Show()
 
-            Case "Main"
-                f.Dispose()
-                f = New MainFW
-                f.TopLevel = False
-                Me.Panel1.Controls.Add(f)
-                f.Dock = DockStyle.Fill
-                f.Show()
+                'Case "Main"
+                '   f.Dispose()
+                '  f = New MainFW
+                ' f.TopLevel = False
+                ' Me.Panel1.Controls.Add(f)
+                ' f.Dock = DockStyle.Fill
+               ' f.Show()
 
-            Case "Forwarder"
-                f.Dispose()
-                f = New Details
-                f.TopLevel = False
-                Me.Panel1.Controls.Add(f)
-                f.Dock = DockStyle.Fill
-                f.Show()
+
 
             Case "Details"
                 f.Dispose()
@@ -325,18 +391,148 @@ Public Class MDIForwarders
                 f.Dock = DockStyle.Fill
                 f.Show()
 
-            Case "Brokerage"
+            Case "User Settings"
                 f.Dispose()
-                f = New Advances
+                f = New UserPermissions
                 f.TopLevel = False
                 Me.Panel1.Controls.Add(f)
                 f.Dock = DockStyle.Fill
                 f.Show()
 
+            Case "Billing"
+                f.Dispose()
+                f = New Billing
+                f.TopLevel = False
+                Me.Panel1.Controls.Add(f)
+                f.Dock = DockStyle.Fill
+                f.Show()
+
+
         End Select
 
 
     End Sub
+    Sub BindTreeViewAdmin()
+        Dim connetionString = "Data Source=LAPTOP-SQ6GSPQV; Initial Catalog=FW;Integrated Security=True;"
+        Dim conn As System.Data.SqlClient.SqlConnection = New SqlClient.SqlConnection(connetionString)
+        Dim da As New SqlDataAdapter
+        Dim cmd As New SqlCommand
+        Dim dt As New DataTable
+        Dim pke(0) As DataColumn
+        Dim i As Integer
+        Dim j As Integer
+        Try
+
+            cmd.CommandText = "Select * From Users Inner Join UserScreen On Users.UserID=UserScreen.UserID Inner Join Screen on UserScreen.ScreenID=Screen.ScreenID Where UserScreen.UserID='" + gs_User + "'"
+            da.SelectCommand = cmd
+            da.SelectCommand.Connection = conn
+            da.Fill(dt)
+            pke(0) = dt.Columns("ScreenID")
+            dt.PrimaryKey = pke
+            conn.Close()
 
 
+            TreeView1.Nodes.Add("Forwarders")
+            TreeView1.Nodes.Add("Brokerage")
+            TreeView1.Nodes.Add("Billing")
+            TreeView1.Nodes.Add("Admin")
+            For j = 0 To dt.Rows.Count - 1
+                If (dt.Rows(j).Item("Status") = "Enable") Then
+                    If (dt.Rows(j).Item("FormParent") = "Forwarders") Then
+                        TreeView1.Nodes(i).Nodes.Add(dt.Rows(j).Item("NodeName"))
+                        Me.TreeView1.Nodes(0).ExpandAll()
+                    ElseIf (dt.Rows(j).Item("FormParent") = "Brokerage") Then
+                        TreeView1.Nodes(i + 1).Nodes.Add(dt.Rows(j).Item("NodeName"))
+                        Me.TreeView1.Nodes(1).ExpandAll()
+                    ElseIf (dt.Rows(j).Item("FormParent") = "Billing") Then
+                        TreeView1.Nodes(i + 2).Nodes.Add(dt.Rows(j).Item("NodeName"))
+                        Me.TreeView1.Nodes(2).ExpandAll()
+                    ElseIf (dt.Rows(j).Item("FormParent") = "Admin") Then
+                        TreeView1.Nodes(i + 3).Nodes.Add(dt.Rows(j).Item("NodeName"))
+                        Me.TreeView1.Nodes(3).ExpandAll()
+                    End If
+                End If
+
+            Next
+
+
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Sub BindTreeViewForwarder()
+        Dim connetionString = "Data Source=LAPTOP-SQ6GSPQV; Initial Catalog=FW;Integrated Security=True;"
+        Dim conn As System.Data.SqlClient.SqlConnection = New SqlClient.SqlConnection(connetionString)
+        Dim da As New SqlDataAdapter
+        Dim cmd As New SqlCommand
+        Dim dt As New DataTable
+        Dim pke(0) As DataColumn
+        Dim i As Integer
+        Dim j As Integer
+        Try
+
+            cmd.CommandText = "Select * from SCREEN "
+            da.SelectCommand = cmd
+            da.SelectCommand.Connection = conn
+            da.Fill(dt)
+            pke(0) = dt.Columns("ScreenID")
+            dt.PrimaryKey = pke
+            conn.Close()
+
+
+            TreeView1.Nodes.Add("Forwarders")
+            For j = 0 To dt.Rows.Count - 1
+
+                TreeView1.Nodes(i).Nodes.Add(dt.Rows(j).Item("NodeName"))
+            Next
+            Me.TreeView1.Nodes(0).ExpandAll()
+
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Sub BindTreeViewBrokerage()
+        Dim connetionString = "Data Source=LAPTOP-SQ6GSPQV; Initial Catalog=FW;Integrated Security=True;"
+        Dim conn As System.Data.SqlClient.SqlConnection = New SqlClient.SqlConnection(connetionString)
+        Dim da As New SqlDataAdapter
+        Dim cmd As New SqlCommand
+        Dim dt As New DataTable
+        Dim pke(0) As DataColumn
+        Dim i As Integer
+        Dim j As Integer
+        Try
+
+            cmd.CommandText = "Select * from SCREEN where Status='Active' AND FormParent='Brokerage'"
+            da.SelectCommand = cmd
+            da.SelectCommand.Connection = conn
+            da.Fill(dt)
+            pke(0) = dt.Columns("ScreenID")
+            dt.PrimaryKey = pke
+            conn.Close()
+
+
+            TreeView1.Nodes.Add("Brokerage")
+            For j = 0 To dt.Rows.Count - 1
+                TreeView1.Nodes(i).Nodes.Add(dt.Rows(j).Item("NodeName"))
+            Next
+
+
+
+
+            Me.TreeView1.Nodes(0).ExpandAll()
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub MDIForwarders_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If (e.Control AndAlso e.KeyCode = Keys.N) Then
+            Debug.Print("Call Save action here")
+        End If
+    End Sub
 End Class
