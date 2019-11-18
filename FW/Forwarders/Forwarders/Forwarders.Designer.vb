@@ -27,7 +27,7 @@ Partial Class MDIForwarders
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MDIForwarders))
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.FileMenu = New System.Windows.Forms.ToolStripMenuItem()
-        Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuShipment = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -83,6 +83,7 @@ Partial Class MDIForwarders
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.TreeView1 = New System.Windows.Forms.TreeView()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -104,20 +105,20 @@ Partial Class MDIForwarders
         '
         'FileMenu
         '
-        Me.FileMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.OpenToolStripMenuItem, Me.ToolStripSeparator3, Me.SaveToolStripMenuItem, Me.SaveAsToolStripMenuItem, Me.ToolStripSeparator4, Me.PrintToolStripMenuItem, Me.PrintPreviewToolStripMenuItem, Me.PrintSetupToolStripMenuItem, Me.ToolStripSeparator5, Me.ExitToolStripMenuItem})
+        Me.FileMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuShipment, Me.OpenToolStripMenuItem, Me.ToolStripSeparator3, Me.SaveToolStripMenuItem, Me.SaveAsToolStripMenuItem, Me.ToolStripMenuItem1, Me.ToolStripSeparator4, Me.PrintToolStripMenuItem, Me.PrintPreviewToolStripMenuItem, Me.PrintSetupToolStripMenuItem, Me.ToolStripSeparator5, Me.ExitToolStripMenuItem})
         Me.FileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder
         Me.FileMenu.Name = "FileMenu"
-        Me.FileMenu.Size = New System.Drawing.Size(37, 20)
-        Me.FileMenu.Text = "&File"
+        Me.FileMenu.Size = New System.Drawing.Size(60, 20)
+        Me.FileMenu.Text = "&Module"
         '
-        'NewToolStripMenuItem
+        'menuShipment
         '
-        Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black
-        Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
-        Me.NewToolStripMenuItem.Text = "&New"
+        Me.menuShipment.Image = CType(resources.GetObject("menuShipment.Image"), System.Drawing.Image)
+        Me.menuShipment.ImageTransparentColor = System.Drawing.Color.Black
+        Me.menuShipment.Name = "menuShipment"
+        Me.menuShipment.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
+        Me.menuShipment.Size = New System.Drawing.Size(174, 22)
+        Me.menuShipment.Text = "&Shipment"
         '
         'OpenToolStripMenuItem
         '
@@ -125,13 +126,13 @@ Partial Class MDIForwarders
         Me.OpenToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
         Me.OpenToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
-        Me.OpenToolStripMenuItem.Text = "&Open"
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.OpenToolStripMenuItem.Text = "&Advances"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(143, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(171, 6)
         '
         'SaveToolStripMenuItem
         '
@@ -139,19 +140,19 @@ Partial Class MDIForwarders
         Me.SaveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
         Me.SaveToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
-        Me.SaveToolStripMenuItem.Text = "&Save"
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.SaveToolStripMenuItem.Text = "&Liquidation"
         '
         'SaveAsToolStripMenuItem
         '
         Me.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem"
-        Me.SaveAsToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
-        Me.SaveAsToolStripMenuItem.Text = "Save &As"
+        Me.SaveAsToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.SaveAsToolStripMenuItem.Text = "&Billing"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(143, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(171, 6)
         '
         'PrintToolStripMenuItem
         '
@@ -159,7 +160,7 @@ Partial Class MDIForwarders
         Me.PrintToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black
         Me.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem"
         Me.PrintToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
-        Me.PrintToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
+        Me.PrintToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
         Me.PrintToolStripMenuItem.Text = "&Print"
         '
         'PrintPreviewToolStripMenuItem
@@ -167,24 +168,24 @@ Partial Class MDIForwarders
         Me.PrintPreviewToolStripMenuItem.Image = CType(resources.GetObject("PrintPreviewToolStripMenuItem.Image"), System.Drawing.Image)
         Me.PrintPreviewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black
         Me.PrintPreviewToolStripMenuItem.Name = "PrintPreviewToolStripMenuItem"
-        Me.PrintPreviewToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
+        Me.PrintPreviewToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
         Me.PrintPreviewToolStripMenuItem.Text = "Print Pre&view"
         '
         'PrintSetupToolStripMenuItem
         '
         Me.PrintSetupToolStripMenuItem.Name = "PrintSetupToolStripMenuItem"
-        Me.PrintSetupToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
+        Me.PrintSetupToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
         Me.PrintSetupToolStripMenuItem.Text = "Print Setup"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(143, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(171, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'EditMenu
@@ -515,6 +516,12 @@ Partial Class MDIForwarders
         Me.Panel1.Size = New System.Drawing.Size(761, 417)
         Me.Panel1.TabIndex = 0
         '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(174, 22)
+        Me.ToolStripMenuItem1.Text = "&Collection"
+        '
         'MDIForwarders
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 14.0!)
@@ -577,7 +584,7 @@ Partial Class MDIForwarders
     Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents PrintSetupToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SaveAsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents NewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menuShipment As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FileMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OpenToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
@@ -602,4 +609,5 @@ Partial Class MDIForwarders
     Friend WithEvents Panel1 As Panel
     Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
+    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
 End Class

@@ -70,3 +70,9 @@ D:\Documents\GitHub\mimaprog\FW\Forwarders\Forwarders\obj\Debug\Forwarders.MainF
 D:\Documents\GitHub\mimaprog\FW\Forwarders\Forwarders\obj\Debug\Forwarders.Resources.resources
 D:\Documents\GitHub\mimaprog\FW\Forwarders\Forwarders\obj\Debug\Forwarders.ScheduleOfDelivery.resources
 D:\Documents\GitHub\mimaprog\FW\Forwarders\Forwarders\obj\Debug\Forwarders.vbproj.GenerateResource.Cache
+D:\TCU_GH\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.CertificateOfPayment.resources
+D:\TCU_GH\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.CustomInfo.resources
+D:\TCU_GH\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.Details.resources
+D:\TCU_GH\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.History.resources
+D:\TCU_GH\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.MainFW.resources
+D:\TCU_GH\SE_FW2\FW\Forwarders\Forwarders\obj\Debug\Forwarders.ScheduleOfDelivery.resources

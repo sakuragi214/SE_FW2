@@ -15,16 +15,22 @@ Public Class MDIForwarders
         aTimer.Start()
     End Sub
 
-    Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs) Handles NewToolStripMenuItem.Click, NewToolStripButton.Click, NewWindowToolStripMenuItem.Click
+    Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs) Handles menuShipment.Click, NewToolStripButton.Click, NewWindowToolStripMenuItem.Click
         ' Create a new instance of the child form.
         Dim ChildForm As New System.Windows.Forms.Form
         ' Make it a child of this MDI form before showing it.
+        If menuShipment.Text = "&Shipment" Then gs_Module = "SH"
+        fGENERATEMenu()
         ChildForm.MdiParent = Me
 
         m_ChildFormNumber += 1
         ChildForm.Text = "Window " & m_ChildFormNumber
 
         ChildForm.Show()
+
+
+
+
     End Sub
 
     Private Sub OpenFile(ByVal sender As Object, ByVal e As EventArgs) Handles OpenToolStripMenuItem.Click, OpenToolStripButton.Click
@@ -97,7 +103,83 @@ Public Class MDIForwarders
     End Sub
 
     Private m_ChildFormNumber As Integer
+    Function fGENERATEMenu()
+        Dim Forwarding As TreeNode
+        Dim Brokerage As TreeNode
+        Dim UserSettings As TreeNode
 
+
+
+
+
+        'Dim rsSCR As New ADODB.Recordset
+        'Dim logstr = ("SELECT Description From Screens WHERE Module='" & gs_Module & "'")
+
+        'With rsSCR
+        '    .CursorLocation = ADODB.CursorLocationEnum.adUseClient
+        '    .CursorType = ADODB.CursorTypeEnum.adOpenStatic
+        '    .LockType = ADODB.LockTypeEnum.adLockBatchOptimistic
+        '    .Open(logstr, gs_Conn)
+
+
+        '    If Not .EOF Then
+        '        '    Forwarding = New TreeNode("Shipment")
+        '        '    TreeView1.Nodes.Add(Forwarding)
+        '        '    For i = 1 To rsSCR.RecordCount
+        '        '        TreeView1.Nodes(0).Nodes(0).Nodes.Add(New _
+        '        'TreeNode("Sub Project" & Str(i)))
+        '        '        'Forwarding.Nodes.Add(rsSCR.Fields(i - 1).Value)
+        '        '    Next
+        '        Forwarding = New TreeNode("Shipment")
+        '        TreeView1.Nodes.Add(Forwarding)
+        '        'TreeView1.Nodes(0).Nodes.Add(New TreeNode("Project 1"))
+        '        'Creating child nodes under the first child
+
+        '        For i As Integer = 1 To rsSCR.RecordCount
+        '            TreeView1.Nodes(0).Nodes.Add(New _
+        '               TreeNode(rsSCR.Fields(i - 1).Value))
+        '            rsSCR.MoveNext()
+        '        Next i
+
+
+
+        '    End If
+        'End With
+
+
+        Dim da As New System.Data.OleDb.OleDbDataAdapter
+        Dim ds As New DataSet
+        Dim rsSCR As New ADODB.Recordset
+        Dim logstr = ("SELECT Description From Screens WHERE Module='" & gs_Module & "'")
+
+        With rsSCR
+            .CursorLocation = ADODB.CursorLocationEnum.adUseClient
+            .CursorType = ADODB.CursorTypeEnum.adOpenStatic
+            .LockType = ADODB.LockTypeEnum.adLockBatchOptimistic
+            .Open(logstr, gs_Conn)
+
+
+            Dim x = rsSCR.RecordCount
+
+            If Not .EOF Then
+                da.Fill(ds, rsSCR, "Screens")
+
+                Forwarding = New TreeNode("Shipment")
+                TreeView1.Nodes.Add(Forwarding)
+
+
+                For i As Integer = 1 To x
+                    TreeView1.Nodes(0).Nodes.Add(New _
+                       TreeNode(ds.Tables("Screens").Rows(i - 1).Item(0)))
+
+                Next i
+
+
+            End If
+            End With
+
+
+    End Function
     Private Sub MDIForwarders_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ToolStripStatusLabel3.Text = ("USER: " + FW.gs_User)
 
@@ -108,41 +190,39 @@ Public Class MDIForwarders
             Me.Panel1.Controls.Add(f)
             f.Dock = DockStyle.Fill
         f.Show()
-        Dim Forwarding As TreeNode
-        Dim Brokerage As TreeNode
-        Dim UserSettings As TreeNode
-        If (FW.gs_User = "admin") Then
-            Forwarding = New TreeNode("Forwarder")
-            TreeView1.Nodes.Add(Forwarding)
-            Forwarding.Nodes.Add("Details")
-            Forwarding.Nodes.Add("Custom Info")
-            Forwarding.Nodes.Add("History")
-            Forwarding.Nodes.Add("Certificate Of Payment")
-            Forwarding.Nodes.Add("Schedule Of Delivery")
-            Brokerage = New TreeNode("Brokerage")
-            TreeView1.Nodes.Add(Brokerage)
-            Brokerage.Nodes.Add("Advances")
-            Brokerage.Nodes.Add("Liquidation")
-            UserSettings = New TreeNode("User Settings")
-            TreeView1.Nodes.Add(UserSettings)
-            Me.TreeView1.Nodes(0).ExpandAll()
-            Me.TreeView1.Nodes(1).ExpandAll()
-        ElseIf (FW.gs_User = "forwarder") Then
-            Forwarding = New TreeNode("Forwarder")
-            TreeView1.Nodes.Add(Forwarding)
-            Forwarding.Nodes.Add("Details")
-            Forwarding.Nodes.Add("Custom Info")
-            Forwarding.Nodes.Add("History")
-            Forwarding.Nodes.Add("Certificate Of Payment")
-            Forwarding.Nodes.Add("Schedule Of Delivery")
-            Me.TreeView1.Nodes(0).ExpandAll()
-        ElseIf (FW.gs_User = "broker") Then
-            Brokerage = New TreeNode("Brokerage")
-            TreeView1.Nodes.Add(Brokerage)
-            Brokerage.Nodes.Add("Advances")
-            Brokerage.Nodes.Add("Liquidation")
-            Me.TreeView1.Nodes(0).ExpandAll()
-        End If
+
+        'If (FW.gs_User = "admin") Then
+        '    Forwarding = New TreeNode("Forwarder")
+        '    TreeView1.Nodes.Add(Forwarding)
+        '    Forwarding.Nodes.Add("Details")
+        '    Forwarding.Nodes.Add("Custom Info")
+        '    Forwarding.Nodes.Add("History")
+        '    Forwarding.Nodes.Add("Certificate Of Payment")
+        '    Forwarding.Nodes.Add("Schedule Of Delivery")
+        '    Brokerage = New TreeNode("Brokerage")
+        '    TreeView1.Nodes.Add(Brokerage)
+        '    Brokerage.Nodes.Add("Advances")
+        '    Brokerage.Nodes.Add("Liquidation")
+        '    UserSettings = New TreeNode("User Settings")
+        '    TreeView1.Nodes.Add(UserSettings)
+        '    Me.TreeView1.Nodes(0).ExpandAll()
+        '    Me.TreeView1.Nodes(1).ExpandAll()
+        'ElseIf (FW.gs_User = "forwarder") Then
+        '    Forwarding = New TreeNode("Forwarder")
+        '    TreeView1.Nodes.Add(Forwarding)
+        '    Forwarding.Nodes.Add("Details")
+        '    Forwarding.Nodes.Add("Custom Info")
+        '    Forwarding.Nodes.Add("History")
+        '    Forwarding.Nodes.Add("Certificate Of Payment")
+        '    Forwarding.Nodes.Add("Schedule Of Delivery")
+        '    Me.TreeView1.Nodes(0).ExpandAll()
+        'ElseIf (FW.gs_User = "broker") Then
+        '    Brokerage = New TreeNode("Brokerage")
+        '    TreeView1.Nodes.Add(Brokerage)
+        '    Brokerage.Nodes.Add("Advances")
+        '    Brokerage.Nodes.Add("Liquidation")
+        '    Me.TreeView1.Nodes(0).ExpandAll()
+        'End If
 
 
 
