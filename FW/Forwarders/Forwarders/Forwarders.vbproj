@@ -72,10 +72,28 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddUser.Designer.vb">
+      <DependentUpon>AddUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Advances.Designer.vb">
       <DependentUpon>Advances.vb</DependentUpon>
     </Compile>
     <Compile Include="Advances.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Billing.Designer.vb">
+      <DependentUpon>Billing.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Billing.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Blank.Designer.vb">
+      <DependentUpon>Blank.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Blank.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CertificateOfPayment.Designer.vb">
@@ -94,6 +112,12 @@
       <DependentUpon>Details.vb</DependentUpon>
     </Compile>
     <Compile Include="Details.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="File Number List.Designer.vb">
+      <DependentUpon>File Number List.vb</DependentUpon>
+    </Compile>
+    <Compile Include="File Number List.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forwarders.Designer.vb">
@@ -128,6 +152,7 @@
     <Compile Include="MainFW.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="mdl.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -150,10 +175,37 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Security.vb" />
+    <Compile Include="SetScreenStatus.Designer.vb">
+      <DependentUpon>SetScreenStatus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SetScreenStatus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="test.Designer.vb">
+      <DependentUpon>test.vb</DependentUpon>
+    </Compile>
+    <Compile Include="test.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserPermissions.Designer.vb">
+      <DependentUpon>UserPermissions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserPermissions.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddUser.resx">
+      <DependentUpon>AddUser.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Advances.resx">
       <DependentUpon>Advances.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Billing.resx">
+      <DependentUpon>Billing.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Blank.resx">
+      <DependentUpon>Blank.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CertificateOfPayment.resx">
       <DependentUpon>CertificateOfPayment.vb</DependentUpon>
@@ -163,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Details.resx">
       <DependentUpon>Details.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="File Number List.resx">
+      <DependentUpon>File Number List.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forwarders.resx">
       <DependentUpon>Forwarders.vb</DependentUpon>
@@ -188,6 +243,15 @@
     <EmbeddedResource Include="ScheduleOfDelivery.resx">
       <DependentUpon>ScheduleOfDelivery.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SetScreenStatus.resx">
+      <DependentUpon>SetScreenStatus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="test.resx">
+      <DependentUpon>test.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserPermissions.resx">
+      <DependentUpon>UserPermissions.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -207,7 +271,16 @@
       <VersionMajor>2</VersionMajor>
       <VersionMinor>7</VersionMinor>
       <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="ADOR">
+      <Guid>{00000300-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
